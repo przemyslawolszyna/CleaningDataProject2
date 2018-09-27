@@ -88,9 +88,8 @@ final_ds <- final_ds[,c('Subject','Activity',m,s)]
 mean_subset <- final_ds %>% group_by(Subject,Activity) %>% summarise_at(c(m,s), mean)
 mean_subset <-as.data.frame((mean_subset))
 
-names(mean_subset)<-append("Subject","Activity",sapply(names(mean_subset[1,2:ncol(mean_subset)]), function(x) paste("Mean of '",x,"'") ))
+names(mean_subset)<-append(c("Subject","Activity"),sapply(names(mean_subset[1,3:ncol(mean_subset)]), function(x) paste("Mean of '",x,"'") ))
 
-remove('activities','features','lista','m','s','merged_input')
-
+remove('activities','features','lista','m','s','merged_input','s_test','s_train')
 
 write.table(mean_subset,'data_set.txt',row.names=FALSE)
