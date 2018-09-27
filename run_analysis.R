@@ -85,3 +85,6 @@ mean_subset <-as.data.frame((mean_subset))
 names(mean_subset)<-append("Activity",sapply(names(mean_subset[1,2:ncol(mean_subset)]), function(x) paste("Mean of '",x,"'") ))
 
 remove('activities','features','lista','m','s','merged_input')
+
+
+write.table(mean_subset,'data_set.txt',row.names=FALSE)
